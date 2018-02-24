@@ -52,6 +52,19 @@ message SCLoginServerNotOpen {
     /**空消息。服务器发完这个消息之后，就会断开连接*/
 }
 
+/**
+ * 服务器通知，登录成功并为其分配一个网关（Gate）
+ */
+message SCLoginSuccess {
+    option (gc_message_type) = SC_LOGIN_SUCCESS;
+
+    /**Gate的IP*/
+    required string gateIP = 1;
+    /**Gate的端口*/
+    required int32 gatePort = 2;
+    /**验证码*/
+    repeated int32 verificationCode = 3;
+}
 
 /**
  * 服务器通知，登录失败
